@@ -1,5 +1,3 @@
-import xdrlib
-import sys
 import xlrd
 import xlwt
 
@@ -7,7 +5,12 @@ import xlwt
 # open a excel file.
 def open_excel(file='input.xlsx'):
     try:
+        import pdb  # the python debugger
+        pdb.set_trace()
         data = xlrd.open_workbook(file)
+        import time  # the time package
+        print('current tiem: {0}\t{1}'.format(time.localtime(), time.time()))
+        pdb.set_trace()
         return data
     except Exception:
         print("handle the exception.")

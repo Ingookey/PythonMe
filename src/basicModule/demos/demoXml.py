@@ -74,7 +74,7 @@ collection = DOMTree.documentElement
 if collection.hasAttribute("shelf"):
     print("Root elements : %s" % collection.getAttribute("shelf"))
 
-# 在集合中获取所有电影
+# 在集合中获取所有 movie
 movies = collection.getElementsByTagName("movie")
 
 # 打印每部电影的详细信息

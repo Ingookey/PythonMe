@@ -1,23 +1,21 @@
 # coding: utf-8
-# demoJson.py: used for json.
-
 import json
 
 
-def testJson():
+def executeJson():
     data = {
-        'no': 1,
-        'name': 'Runoob',
+        'num': 1,
+        'name': 'json test',
         'url': 'http://www.runoob.com'
     }
 
     json_str = json.dumps(data)
-    print("Python 原始数据：", repr(data))
-    print("JSON 对象：", json_str)
+    print("[executeJson] normal data：", repr(data))
+    print("[executeJson] json object：", json_str)
 
     # 将 JSON 对象转换为 Python 字典
     data2 = json.loads(json_str)
-    print("data2['name']: {}, data2['url']: {}".format(
+    print("data2['name']: {0}, data2['url']: {1}".format(
         data2['name'], data2['url']))
 
     # 对文件写入Json数据
@@ -32,5 +30,5 @@ def testJson():
 
 
 if __name__ == '__main__':
-    testJson()
+    executeJson()
     pass

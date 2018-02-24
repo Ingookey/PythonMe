@@ -9,72 +9,68 @@ import nose
 from decorator import decorate
 from _stat import filemode
 
+
 def main():
-    '''
-    The main inlet.
-    '''
     testLogging()
-    #test_Decorate()
-    #testDebug()
-    #testTime()
-    #testFile()
-    #testDemo()
-    #testList()
-    #testString()
+    # test_Decorate()
+    # testDebug()
+    # testTime()
+    # testFile()
+    # testDemo()
+    # testList()
+    # testString()
     pass
+
 
 def testLogging():
     import logging
     print('testLogging begin.')
     logging.basicConfig(
-        level = logging.DEBUG,
-        format = '%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
-        datefmt = '%a, %d %b %Y %H:%M:%S',
-        filename = 'ingoo.log',
-        filemode = 'w')
+        level=logging.DEBUG,
+        format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
+        datefmt='%a, %d %b %Y %H:%M:%S',
+        filename='ingoo.log',
+        filemode='w')
     console = logging.StreamHandler()
     console.setLevel(logging.DEBUG)
     formatter = logging.Formatter('%(name)-12s: %(levelname)-8s %(message)s')
     console.setFormatter(formatter)
     logging.getLogger('').addHandler(console)
-    
+
     logging.debug("Logging message for basicDemo.")
     for x in range(9):
         logging.debug('Current value: {}'.format(x))
     pass
 
+
 def decorate_fun(fun):
     def new_fun(*args, **kwargs):
-        print('got args: {}, {}'.format(args, kwargs))
-        print('this is a fun\'s start')
+        print('initial parameters: {}, {}'.format(args, kwargs))
+        print('this is the fun()"s start')
         fun(*args, **kwargs)
-        print('this is the fun\'s end')
+        print('this is the fun()"s end')
     return new_fun
 
+
 @decorate_fun
-def fun(number, start_number = 0):
+def fun(number, start_number=0):
     for n in range(number):
         start_number += n
         print(n)
         time.sleep(1)
     print('the final number is {}'.format(start_number))
 
+
 def test_Decorate():
-    print(fun.__name__) # new_fun
-    fun(5, start_number = 5)
+    print(fun.__name__)  # new_fun
+    fun(5, start_number=5)
     pass
 
-def testDebug():
-    import pdb
-    pdb.set_trace()
-    for i in range(6):
-        print(i)
-    pdb.set_trace()
-    pass
 
 def just_do_it(text):
     return text.capitalize()
     pass
+
 
 def list_generator(number):
     '''
@@ -84,9 +80,6 @@ def list_generator(number):
     return [n for n in range(number)]
     pass
 
-def testTime():
-    print('Cur time: {0}\n{1}'.format(time.localtime(), time.time()))
-    pass
 
 def testFile():
     '''
@@ -119,6 +112,7 @@ def testFile():
     '''
     pass
 
+
 def testDemo():
     var = (('a1'), ('c2'))
     varDict1 = dict(var)
@@ -133,19 +127,21 @@ def testDemo():
           varDict2.items())
     pass
 
+
 def testList():
     stringList = "999123456789 jk"
     oldList = list(stringList)
     print(type(oldList), oldList)
-    newList = oldList[0 : 4 : 2]
+    newList = oldList[0: 4: 2]
     print(type(newList), newList)
     verList = oldList[::-1]
     print(type(verList), verList)
-    oldList[0 : 2] = []
+    oldList[0: 2] = []
     print(type(oldList), oldList)
-    del oldList[0 : 1]
+    del oldList[0: 1]
     print(type(oldList), oldList)
     pass
+
 
 def testString():
     '''
@@ -158,12 +154,14 @@ def testString():
     print(type(stringlist), stringlist)'''
     pass
 
+
 class TestCap(unittest.TestCase):
     def setUp(self):
         pass
+
     def tearDown(self):
         pass
-    
+
     def test_one_word(self):
         text = 'duck'
         result = just_do_it(text)
@@ -174,9 +172,10 @@ class TestCap(unittest.TestCase):
         result = just_do_it(text)
         self.assertEqual(result, 'A veritable flock of ducks')
 
+
 if __name__ == '__main__':
-    #print(pip.pep425tags.get_supported())
+    # print(pip.pep425tags.get_supported())
     main()
-    #doctest.testmod()
-    #unittest.main()
+    # doctest.testmod()
+    # unittest.main()
     pass
