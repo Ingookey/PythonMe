@@ -1,2 +1,0 @@
-# PythonMe
-Python for me
