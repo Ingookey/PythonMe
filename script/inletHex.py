@@ -1,103 +1,100 @@
-
 import os
 import struct
 import logging
 
-logging.basicConfig(format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s', \
-                    filename='D:\logger.log', filemode='w', \
-                    level=logging.DEBUG)
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', filename=r'D:\logger.log',
+                    filemode='w', level=logging.DEBUG)
+
 
 class WithHex:
-    def __init__(self, binFile):
-        if os.path.exists(binFile):
-            self.binFile = binFile
-            logging.debug("file {} exists and have done init".format(self.binFile))
+    def __init__(self, bin_file):
+        if os.path.exists(bin_file):
+            self.bin_file = bin_file
+            logging.debug("file {} exists and have done init".format(self.bin_file))
         else:
             logging.debug("file not exists, init fail")
         pass
 
     def readHex(self):
         try:
-            binData = open(self.binFile, 'rb')
-            size = os.path.getsize(self.binFile)
-            logging.info("The {} size: {}".format(self.binFile, size))
+            bin_data = open(self.bin_file, 'rb')
+            size = os.path.getsize(self.bin_file)
+            logging.info("The {} size: {}".format(self.bin_file, size))
 
             for i in range(size):
-                data1Byte = binData.read(1)
+                data1Byte = bin_data.read(1)
                 dataTuple = struct.unpack('B', data1Byte)
                 logging.debug("The {} is: {} and {}".format(i, data1Byte, dataTuple[0]))
         finally:
-            binData.close()
+            bin_data.close()
         pass
 
-    def getHex(self, posStart = 0, posOffset = 0, howMuch = 0):
+    def getHex(self, posStart=0, posOffset=0, howMuch=0):
         logging.debug("posStart: {}, posOffset: {}".format(posStart, posOffset))
         if posStart not in range(3):
             logging.info("wrong input, check again.")
             exit(1)
 
         try:
-            binData = open(self.binFile, 'rb')
-            size = os.path.getsize(self.binFile)
-            logging.info("The {} size: {}, curPos: {}".format(self.binFile, size, binData.tell()))
+            bin_data = open(self.bin_file, 'rb')
+            size = os.path.getsize(self.bin_file)
+            logging.info("The {} size: {}, curPos: {}".format(self.bin_file, size, bin_data.tell()))
 
             import math
             if math.fabs(posOffset) + math.fabs(howMuch) > size:
                 logging.info("offset over size, chck again.")
                 exit(1)
 
-            binData.seek(posOffset, posStart)
-            logging.info("The {} size: {}, curPos: {}".format(self.binFile, size, binData.tell()))
-            dataByte = binData.read(howMuch)
+            bin_data.seek(posOffset, posStart)
+            logging.info("The {} size: {}, curPos: {}".format(self.bin_file, size, bin_data.tell()))
+            data_byte = bin_data.read(howMuch)
         finally:
-            binData.close()
+            bin_data.close()
 
-        if dataByte:
+        if data_byte:
             return None
         else:
-            return dataByte
+            return data_byte
 
-
-    def writeHex(self, newData, offset = 0):
-        content = str.encode(newData)
-        filepath = "d:\Temp.Files\dataNew.jpg" # todo remove
+    def writeHex(self, new_data, offset=0):
+        content = str.encode(new_data)
+        file_path = r"d:\Temp.Files\dataNew.jpg"
         try:
-            binfile = open(filepath, 'rb+')
-            logging.debug("The position: {}".format(binfile.tell()))
-            binPre = binfile.read(offset)
-            logging.debug("binPre: {}".format(binPre))
+            bin_file = open(file_path, 'rb+')
+            logging.debug("The position: {}".format(bin_file.tell()))
+            bin_pre = bin_file.read(offset)
+            logging.debug("bin_pre: {}".format(bin_pre))
 
-            binfile.seek(offset, 0)
-            logging.debug("The position: {}".format(binfile.tell()))
-            binPost = binfile.read()
-            logging.debug("binPost: {}".format(binPost))
+            bin_file.seek(offset, 0)
+            logging.debug("The position: {}".format(bin_file.tell()))
+            bin_post = bin_file.read()
+            logging.debug("bin_post: {}".format(bin_post))
 
-            binfile.seek(0, 0)
-            binfile.write(binPre)
-            binfile.write(content)
-            binfile.write(binPost)
+            bin_file.seek(0, 0)
+            bin_file.write(bin_pre)
+            bin_file.write(content)
+            bin_file.write(bin_post)
         finally:
-            binfile.close()
+            bin_file.close()
 
         try:
-            binfile = open(filepath, 'rb')
-            logging.debug("check binfile: {}".format(binfile.read()))
+            bin_file = open(file_path, 'rb')
+            logging.debug("check bin_file: {}".format(bin_file.read()))
         finally:
-            binfile.close()
+            bin_file.close()
         pass
 
 
-filepath = "d:\Temp.Files\data.jpg"
-
 def main():
-    logging.info("main")
-    rh = WithHex(filepath)
-    #rh.readHex()
-    #logging.debug("the byte data: {}".format(rh.getHex(0, 40880, 3)))
+    file_path = r"d:\Temp.Files\data.jpg"
+    rh = WithHex(file_path)
+    # rh.readHex()
+    # logging.debug("the byte data: {}".format(rh.getHex(0, 40880, 3)))
     rh.writeHex("oo", 2)
 
-    del rh # destroy rh instance
+    del rh  # destroy rh instance
     pass
+
 
 if __name__ == "__main__":
     main()
