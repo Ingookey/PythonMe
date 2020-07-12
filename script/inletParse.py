@@ -1,5 +1,7 @@
 # coding: utf-8
 
+import logging
+
 
 def parse_xml(file_name, tag_1level, tag_2level):
     import xml.dom.minidom as mnd
@@ -10,22 +12,22 @@ def parse_xml(file_name, tag_1level, tag_2level):
         elements = dom_tree.documentElement
     pass
     if elements.hasAttribute(tag_1level):
-        print("tag_1level : {}".format(elements.getAttribute(tag_1level)))
+        logging.debug("tag_1level : {}".format(elements.getAttribute(tag_1level)))
     pass
 
     for item in elements.getElementsByTagName(tag_2level):
         if item.hasAttribute("title"):
-            print("title: {}".format(item.getAttribute("title")))
+            logging.debug("title: {}".format(item.getAttribute("title")))
         pass
         ele_list = ['type', 'format', 'rating', 'description']
         for item2 in ele_list:
             item_2level = item.getElementsByTagName(item2)[0]
-            print("{}: {}, {}".format(item2, item_2level, item_2level.childNodes[0].data))
+            logging.debug("{}: {}, {}".format(item2, item_2level, item_2level.childNodes[0].data))
         pass
     pass
 
 
-if __name__ == "__main__":
-    fileName = "../data/xmlFile.xml"
-    parse_xml(fileName, "shelf", "movie")
+def inlet():
+    file_name = "../data/xmlFile.xml"
+    parse_xml(file_name, "shelf", "movie")
     pass

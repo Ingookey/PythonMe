@@ -2,8 +2,7 @@ import os
 import struct
 import logging
 
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', filename=r'D:\logger.log',
-                    filemode='w', level=logging.DEBUG)
+
 
 
 class WithHex:
@@ -15,7 +14,7 @@ class WithHex:
             logging.debug("file not exists, init fail")
         pass
 
-    def readHex(self):
+    def rea_hex(self):
         try:
             bin_data = open(self.bin_file, 'rb')
             size = os.path.getsize(self.bin_file)
@@ -29,7 +28,7 @@ class WithHex:
             bin_data.close()
         pass
 
-    def getHex(self, posStart=0, posOffset=0, howMuch=0):
+    def get_hex(self, posStart=0, posOffset=0, howMuch=0):
         logging.debug("posStart: {}, posOffset: {}".format(posStart, posOffset))
         if posStart not in range(3):
             logging.info("wrong input, check again.")
@@ -56,7 +55,7 @@ class WithHex:
         else:
             return data_byte
 
-    def writeHex(self, new_data, offset=0):
+    def write_hex(self, new_data, offset=0):
         content = str.encode(new_data)
         file_path = r"d:\Temp.Files\dataNew.jpg"
         try:
@@ -85,17 +84,17 @@ class WithHex:
         pass
 
 
-def main():
+def inlet():
     file_path = r"d:\Temp.Files\data.jpg"
     rh = WithHex(file_path)
-    # rh.readHex()
-    # logging.debug("the byte data: {}".format(rh.getHex(0, 40880, 3)))
-    rh.writeHex("oo", 2)
+    # rh.rea_hex()
+    # logging.debug("the byte data: {}".format(rh.get_hex(0, 40880, 3)))
+    rh.write_hex("oo", 2)
 
     del rh  # destroy rh instance
     pass
 
 
 if __name__ == "__main__":
-    main()
+    inlet()
     pass
