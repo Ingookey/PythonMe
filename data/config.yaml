@@ -1,0 +1,7 @@
+repo1:
+  - url : "IBM"
+    branch : "2015-2017"
+    xml: "show"
+repo2:
+  - name : "GA"
+    date : "2017-now"
