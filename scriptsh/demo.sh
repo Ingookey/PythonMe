@@ -15,12 +15,22 @@ function check_input() {
     echo "TOP1: $TOP, TOP2: ${TOP%/*}"
 }
 
+
+function check_tr() {
+    tr_list=(9.0.0HUUiEI\)D 9.0.0HUUiEI\)T 9.0.0HUUiEI\))
+    for item in ${tr_list[*]}
+    do
+        result=$(echo ${item} | sed "s|^.*)||")
+        echo "item: ${item}, result: ${result}"
+    done
+}
+
 function main() {
     echo "main inlet"
     if [[ 1 ]]; then
-      check_input $@
+      check_tr
     else
-      echo "1 is false."
+      check_input $@
     fi
 }
 
