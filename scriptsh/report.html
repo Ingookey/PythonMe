@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CI Check Everyday</title>
+  <style type="text/css">
+    body {
+        color:black;
+        background-color: white;
+        font-family: 'Courier New', Courier, monospace;
+        padding-left: 12em;
+    }
+    ul.navbar {
+        position:absolute;
+        top: 1em;
+        left: 1em;
+        width: 9em;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    ul.navbar li {
+        background: white;
+        margin: 0.5em 0;
+        padding: 0.3em;
+        border-right: 1em solid black;
+    }
+    ul.navbar a {
+        text-decoration: none;
+    }
+    a:link {color: blue;}
+    a:visited {color: purple}
+    h1 {
+        color: brown;
+        background-color: rgb(245, 240, 235);
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    address {
+        margin-top: 1em;
+        padding-bottom: 1em;
+        border-top: thin dotted;
+    }
+    th.tableth {
+        padding: 0.3em;
+        margin: 0.3em;
+        background-color:antiquewhite;
+    }
+    td.tabletd {
+        text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+<ul class="navbar">
+    <li><a href="index.html">CI编译</a>
+    <li><a href="musings.html">j1</a>
+    <li><a href="town.html">j2</a>
+    <li><a href="links.html">j3</a>
+</ul>
+
+<h1>vmp in pipeline</h1>
+<p>note for vmp</p>
+<table width="90%" border="1" cellspacing="1" cellpadding="4" align="center">
+    <tr>
+        <th class="tableth">分支类型</th>
+        <th class="tableth">主支类型</th>
+        <th class="tableth">产品类型</th>
+        <th class="tableth">state.debug</th>
+        <th class="tableth">state.release</th>
+        <th class="tableth">state.ota</th>
+    </tr>
+    <tr>
+        <th class="tableth" rowspan="7">旧有分支</th>
+    </tr>
+    <tr>
+        <th class="tableth" rowspan="3">master</th>
+        <th class="tableth" align="left">myna</th>
+        <td class="tabletd">555 77 854</td>
+        <td class="tabletd">555 77 854</td>
+        <td class="tabletd">555 77 854</td>
+    </tr>
+    <tr>
+        <th class="tableth" align="left">phoenix</th>
+        <td class="tabletd">555 77 854</td>
+        <td class="tabletd">555 77 854</td>
+        <td class="tabletd">555 77 854</td>
+    </tr>
+    <tr>
+        <th class="tableth" align="left">thrush</th>
+        <td class="tabletd">555 77 854</td>
+        <td class="tabletd">555 77 854</td>
+        <td class="tabletd">555 77 854</td>
+    </tr>
+    <tr>
+        <th class="tableth" rowspan="3">release</th>
+        <th class="tableth" align="left">myna</th>
+        <td class="tabletd">555 77 854</td>
+        <td class="tabletd">555 77 854</td>
+        <td class="tabletd">555 77 854</td>
+    </tr>
+    <tr>
+        <th class="tableth" align="left">phoenix</th>
+        <td class="tabletd">555 77 854</td>
+        <td class="tabletd">555 77 854</td>
+        <td class="tabletd">555 77 854</td>
+    </tr>
+    <tr>
+        <th class="tableth" align="left">thrush</th>
+        <td class="tabletd">555 77 854</td>
+        <td class="tabletd">555 77 854</td>
+        <td class="tabletd">555 77 854</td>
+    </tr>
+    <tr>
+        <th class="tableth" rowspan="8">归一分支</th>
+    </tr>
+    <tr>
+        <th class="tableth" rowspan="4">master</th>
+        <th class="tableth" align="left">myna</th>
+        <td class="tabletd">555 77 854</td>
+        <td class="tabletd">555 77 854</td>
+        <td class="tabletd">555 77 854</td>
+    </tr>
+    <tr>
+        <th class="tableth" align="left">phoenix</th>
+        <td class="tabletd">555 77 854</td>
+        <td class="tabletd">555 77 854</td>
+        <td class="tabletd">555 77 854</td>
+    </tr>
+    <tr>
+        <th class="tableth" align="left">phoenix_bt</th>
+        <td class="tabletd">555 77 854</td>
+        <td class="tabletd">555 77 854</td>
+        <td class="tabletd">555 77 854</td>
+    </tr>
+    <tr>
+        <th class="tableth" align="left">thrush</th>
+        <td class="tabletd">555 77 854</td>
+        <td class="tabletd">555 77 854</td>
+        <td class="tabletd">555 77 854</td>
+    </tr>
+    <tr>
+        <th class="tableth" rowspan="3">release</th>
+        <th class="tableth" align="left">myna</th>
+        <td class="tabletd">555 77 854</td>
+        <td class="tabletd">555 77 854</td>
+        <td class="tabletd">555 77 854</td>
+    </tr>
+    <tr>
+        <th class="tableth" align="left">phoenix</th>
+        <td class="tabletd">555 77 854</td>
+        <td class="tabletd">555 77 854</td>
+        <td class="tabletd">555 77 854</td>
+    </tr>
+    <tr>
+        <th class="tableth" align="left">thrush</th>
+        <td class="tabletd">555 77 854</td>
+        <td class="tabletd">555 77 854</td>
+        <td class="tabletd"><a href="">555 77 864</a></td>
+    </tr>
+</table>
+
+<h1>CI Check(Test)</h1>
+
+<address>Support by CI</address>
+</body>
+</html>
