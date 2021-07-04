@@ -20,7 +20,33 @@ li1 = sorted(li1, reverse=False) # [1, 2, 2, 5, 6, 7, 8, 9]
 > re正则表达式
 
 re.compile是将正则表达式编译成一个对象，以加快匹配速度并重复使用
+r表示需要原始字符串，不转义特殊字符
+```python
+li = "<a>showme</a><a>showme</a>"
+# (.*）贪婪匹配，会尽可能多的匹配
+ret1 = re.findall(r"<a>(.*)</a>", li)  # ['showme</a><a>showme']
+# （.*?）非贪婪匹配，会尽可能少匹配
+ret1 = re.findall(r"<a>(.*?)</a>", li)  # ['showme', 'showme']
 
+# 匹配电话号码，并排除尾号是4或1
+tel = '18872548980'
+ret = re.match('1\d{9}[^41]', tel)  # <re.Match object; span=(0, 11), match='18872548980'>
+
+# (.*?)提取匹配的字符串
+strs = '<div class="nam">showme</div>>中国<'
+ret = re.findall(r'<div class=".*">.*?</div>>(.*?)<', strs)  # ['中国']
+
+li = "showme, 中国，汉字"
+ret = re.findall(r"[\u4e00-\u9fa5]+", li) # ['中国', '汉字']
+
+# 匹配出<html><h1>showme</h1></html>
+li = ["<html><h1>http://www.showme.cn</h1></html>", \
+        "<html><h2>http://www.showme.cn</h1></html>"]
+for item in li:
+    ret = re.match(r"<(\w*)><(\w*)>(.*?)</\2></\1>", item)
+    print(ret, ret.group()) #<re.Match object; span=(0, 43), match='<html><h1>http://www.showme.cn</h1></html>'> <html><h1>http://www.showme.cn</h1></html>
+
+```
 
 > 单例模式
 ```python
@@ -32,7 +58,6 @@ class Kfc(object):
             cls.__instance = object.__new__(cls)
         return cls.__instance
 ```
-
 
 > 列表推导式
 
@@ -216,6 +241,37 @@ def hui_wen(li):
     if li[0] != li[-1]:
         return False
     return hui_wen(li[1:-1])
+```
+> 去重
+```python
+def remove_repeat():
+    a = [1, 2, 4, 2, 4, 5, 7, 10, 5, 5, 7, 8, 9, 0, 3]
+    a.sort() # [0, 1, 2, 2, 3, 4, 4, 5, 5, 5, 7, 7, 8, 9, 10]
+    print(a)
+
+    last = a[-1]
+    for i in range(len(a) - 2, -1, -1):
+        if last == a[i]:
+            del a[i]
+        else:
+            last = a[i]
+    # [0, 1, 2, 3, 4, 5, 7, 8, 9, 10]
+    pass
+
+# 去除空格
+li = "showme showme"
+ret = li.replace(" ", "")  # showmeshowme
+
+ret = list(li.split(" "))
+rut = "".join(ret) # showmeshowme
+```
+
+> 其它杂集
+```python
+sum(range(1, 101)
+
+import numpy as np
+li = np.random.permutation(10) # 生成10个随机元素
 ```
 
 # Python易错点
