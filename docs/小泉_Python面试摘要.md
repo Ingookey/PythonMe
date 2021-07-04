@@ -22,7 +22,7 @@ li1 = sorted(li1, reverse=False) # [1, 2, 2, 5, 6, 7, 8, 9]
 re.compile是将正则表达式编译成一个对象，以加快匹配速度并重复使用
 r表示需要原始字符串，不转义特殊字符
 
-![img](%E5%B0%8F%E6%B3%89_Python%E9%9D%A2%E8%AF%95%E6%91%98%E8%A6%81.assets/20150807191845558)
+![img](%E5%B0%8F%E6%B3%89_Python%E9%9D%A2%E8%AF%95%E6%91%98%E8%A6%81.assets/20150807191845558.jpg)
 
 ```python
 li = "<a>showme</a><a>showme</a>"
