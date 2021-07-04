@@ -21,6 +21,9 @@ li1 = sorted(li1, reverse=False) # [1, 2, 2, 5, 6, 7, 8, 9]
 
 re.compile是将正则表达式编译成一个对象，以加快匹配速度并重复使用
 r表示需要原始字符串，不转义特殊字符
+
+![img](%E5%B0%8F%E6%B3%89_Python%E9%9D%A2%E8%AF%95%E6%91%98%E8%A6%81.assets/20150807191845558)
+
 ```python
 li = "<a>showme</a><a>showme</a>"
 # (.*）贪婪匹配，会尽可能多的匹配
@@ -38,6 +41,9 @@ ret = re.findall(r'<div class=".*">.*?</div>>(.*?)<', strs)  # ['中国']
 
 li = "showme, 中国，汉字"
 ret = re.findall(r"[\u4e00-\u9fa5]+", li) # ['中国', '汉字']
+
+# 匹配163.com的邮箱
+ret = re.match(r"\w{4,20}@163\.com$", li)
 
 # 匹配出<html><h1>showme</h1></html>
 li = ["<html><h1>http://www.showme.cn</h1></html>", \
@@ -73,6 +79,7 @@ rut = list(ret)           # [1, 3, 5, 7, 9]
 ```
 
 # Python数据结构与算法
+部分算法可参考 https://cloud.tencent.com/developer/article/1466212
 > 快速排序
 ```python
 '''
