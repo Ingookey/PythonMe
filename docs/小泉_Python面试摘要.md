@@ -19,13 +19,18 @@ li1 = sorted(li1, reverse=False) # [1, 2, 2, 5, 6, 7, 8, 9]
 
 > re正则表达式
 
-re.compile是将正则表达式编译成一个对象，以加快匹配速度并重复使用
 r表示需要原始字符串，不转义特殊字符
+re.compile 将正则表达式编译成一个对象，以加快匹配速度并重复使用
+re.match() 总是从字符串的开头匹配，返回对象需要用group()来显示
+re.search() 对整个字符串进行搜索匹配，返回第一个匹配的字符串的匹配对象，返回对象需要用group()来显示
+re.findall() 查找并返回所有匹配的对象，返回对象不需要用group()来显示
+re.sub() 相当于字符串操作中的replace，比如 li = 'showme    showme\r\n'; ret = re.sub("(?isu)\r\n", "", li)
 
 ![img](%E5%B0%8F%E6%B3%89_Python%E9%9D%A2%E8%AF%95%E6%91%98%E8%A6%81.assets/20150807191845558.jpg)
 
 ```python
 li = "<a>showme</a><a>showme</a>"
+# 注意*或+后面跟着？表示非贪婪匹配，匹配到第一个符合条件的结尾即可
 # (.*）贪婪匹配，会尽可能多的匹配
 ret1 = re.findall(r"<a>(.*)</a>", li)  # ['showme</a><a>showme']
 # （.*?）非贪婪匹配，会尽可能少匹配
@@ -65,8 +70,25 @@ class Kfc(object):
         return cls.__instance
 ```
 
-> 列表推导式
+> 列表推导式，字典推导式，生成器
+```python
+li = [i for i in range(10)]
+print(li, type(li))
+# [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] <class 'list'>
 
+di = {k: random.randint(4, 8) for k in ['a', 'b', 'c', 'd']}
+print(di, type(di))
+# {'a': 8, 'b': 5, 'c': 5, 'd': 7} <class 'dict'>
+
+ti = (i for i in range(10))
+print(ti, type(ti))
+# <generator object <genexpr> at 0x0000028F45B39C10> <class 'generator'>
+
+# 按字符长度排序
+li = ['abc', 'a', 'ac']
+ret = sorted(li, key=lambda k:len(k)) # 或li.sort(key=len)
+# ['a', 'ac', 'abc']
+```
 ```python
 li = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 ret = [i for i in li if i % 2 == 1] # [1, 3, 5, 7, 9]
