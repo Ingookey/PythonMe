@@ -1,7 +1,6 @@
 # Python基础
 
 > 合并2个列表，外加排序呢？
-
 ```python
 li1 = [1, 5, 7, 9]
 li2 = [2, 2, 6, 8]
@@ -11,6 +10,30 @@ li1.extend(li2) # [1, 5, 7, 9, 2, 2, 6, 8]
 li1 += li2      # [1, 5, 7, 9, 2, 2, 6, 8]
 li1.sort(reverse=False)          # [1, 2, 2, 5, 6, 7, 8, 9]
 li1 = sorted(li1, reverse=False) # [1, 2, 2, 5, 6, 7, 8, 9]
+```
+
+> python中什么元素为False
+0，""，[]、{}、()、None, False; 这些元素为False,可通过bool(var)测试
+any(var_iter): 迭代器中有一个元素为真就为真
+all(var_iter): 迭代器中所有的判断项返回都是真，结果才为真
+```python
+bool(()) # False
+li = ['showme', '']
+any(li)  # True
+all(li)  # False
+```
+
+> zip()的使用？
+```python
+la = ('a', 'b')
+lb = (1, 2)
+ret = zip(la, lb)  # <zip object at 0x0000023E8A11FE00>
+list(ret)    # [('a', 1), ('b', 2)]
+dict(ret)    # {'a': 1, 'b': 2}
+
+# 其它创建列表的方法
+ret = dict([('a', 'b'), (1, 2)])    # {'a': 'b', 1: 2}
+ret = dict([['a', 'b'], [1, 2]])    # {'a': 'b', 1: 2}
 ```
 
 > 迭代器与生成器
