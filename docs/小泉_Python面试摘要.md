@@ -36,6 +36,25 @@ ret = dict([('a', 'b'), (1, 2)])    # {'a': 'b', 1: 2}
 ret = dict([['a', 'b'], [1, 2]])    # {'a': 'b', 1: 2}
 ```
 
+> 装饰器
+```python
+from functools import wraps
+
+def wrapper(func):
+    @wraps(func)
+    def in_logic(*args, **kwargs):
+        print("do something else")
+        func(*args, **kwargs)
+    return in_logic
+
+# @wrapper相当于real_logic=wrapper(real_logic)
+@wrapper
+def real_logic():
+    print("do real logic")
+
+real_logic() # real_logic函数名可以像变量一样赋值，赋值时不执行；加()就是执行函数
+```
+
 > 迭代器与生成器
 
 
