@@ -43,16 +43,40 @@ from functools import wraps
 def wrapper(func):
     @wraps(func)
     def in_logic(*args, **kwargs):
-        print("do something else")
+        print("wraps info {}".format(func.__name__))
         func(*args, **kwargs)
     return in_logic
 
 # @wrapper相当于real_logic=wrapper(real_logic)
 @wrapper
-def real_logic():
-    print("do real logic")
+def real_logic(msg):
+    print("info is {}".format(msg))
 
-real_logic() # real_logic函数名可以像变量一样赋值，赋值时不执行；加()就是执行函数
+real_logic("mesage") # real_logic函数名可以像变量一样赋值，赋值时不执行；加()就是执行函数
+```
+```python
+class Rect:
+    def __init__(self, area):
+        self.__area = area
+    
+    @property   # @property修饰的方法操作类中的area私有属性
+    def area(self):
+        return self.__area
+    
+    @area.setter    # @方法名.setter
+    def area(self, newvar):
+        self.__area = newvar
+
+    @area.deleter    # @方法名.setter
+    def area(self):
+        self.__area = 0
+
+rect = Rect(30)
+print("area：", rect.area)  # area： 30
+rect.area = 90
+print("area：", rect.area)  # area： 90
+del rect.area
+print("area：", rect.area)  # area： 0
 ```
 
 > 迭代器与生成器
