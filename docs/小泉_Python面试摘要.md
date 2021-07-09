@@ -370,4 +370,14 @@ li = np.random.permutation(10) # 生成10个随机元素
 ```
 
 # Python易错点
+Better Comments
+Git Graph
+
+# Ref
+| Item          | 链接                                                         | 备注                  |
+| ------------- | ------------------------------------------------------------ | --------------------- |
+| numpy & scipy | https://docs.scipy.org/doc/                                  | numpy & scipy官方文档 |
+| pandas        | https://pandas.pydata.org/pandas-docs/stable/reference/index.html | pandas的官方文档      |
+| tensorflow    | https://tensorflow.google.cn/                                | tensorflow的中文官网  |
+|               |                                                              |                       |
 
